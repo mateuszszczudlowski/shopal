@@ -1,0 +1,14 @@
+import 'package:flutter/material.dart';
+
+class SearchPage extends StatelessWidget {
+  const SearchPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      alignment: Alignment.center,
+      child: const Text('Page 2'),
+    );
+  }
+}
