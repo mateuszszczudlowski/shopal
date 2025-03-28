@@ -17,6 +17,14 @@ Shopal is a mobile application built with Flutter that helps users find and book
 - **Reviews & Ratings**: Read and leave reviews for stylists to help the community
 - **Dark/Light Theme**: Customizable app appearance for comfortable usage in any environment
 
+## Screenshots
+
+<p align="center">
+  <img src="assets/readme/screenshot1.png" width="250" alt="Login Screen">
+  <img src="assets/readme/screenshot2.png" width="250" alt="Main Screen">
+  <img src="assets/readme/screenshot3.png" width="250" alt="Booking Screen">
+  <img src="assets/readme/screenshot4.png" width="250" alt="Stylist Screen">
+</p>
 
 ## Technology Stack
 
