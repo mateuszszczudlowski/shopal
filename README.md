@@ -19,7 +19,7 @@ Shopal is a mobile application built with Flutter that helps users find and book
 
 ## Screenshots
 
-<p align="center">
+<p align="left">
   <img src="assets/readme/screenshot1.png" width="250" alt="Login Screen">
   <img src="assets/readme/screenshot2.png" width="250" alt="Main Screen">
   <img src="assets/readme/screenshot3.png" width="250" alt="Booking Screen">
