@@ -27,7 +27,7 @@ class LoginWithSocialMedia extends StatelessWidget {
                   height: kCustomMediumGap2,
                   decoration: BoxDecoration(
                       borderRadius: kDefaultBorderRadius,
-                      color: Theme.of(context).colorScheme.onBackground),
+                      color: Theme.of(context).colorScheme.surfaceBright),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40.0, vertical: 10),
@@ -56,7 +56,7 @@ class LoginWithSocialMedia extends StatelessWidget {
                   height: kCustomMediumGap2,
                   decoration: BoxDecoration(
                       borderRadius: kDefaultBorderRadius,
-                      color: Theme.of(context).colorScheme.onBackground),
+                      color: Theme.of(context).colorScheme.surfaceBright),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40.0, vertical: 10),

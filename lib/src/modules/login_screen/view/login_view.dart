@@ -13,11 +13,13 @@ import 'package:template/src/widgets/default_input.dart';
 import 'package:template/src/widgets/header_widget.dart';
 import 'package:template/src/widgets/login_with_social_media.dart';
 
+@RoutePage()
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
   Future<void> _resetPassword(BuildContext context) async {
     await ShowPlatformAlertDialog.showPlatformAlertDialogWithCallbacks(
+        showInputTextField: true,
         context: context,
         onNoTap: () {
           context.router.pop(false).then((value) => context
@@ -46,15 +48,15 @@ class LoginView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const SizedBox(
-                      height: kSmallGap3,
+                      height: kLargeGap4,
                     ),
-                    IconButton(
-                      onPressed: () => context.router.navigateBack(),
-                      splashRadius: kCustomSmall2,
-                      icon: Icon(Icons.arrow_back_ios_outlined,
-                          size: kIconSizeMedium2,
-                          color: Theme.of(context).colorScheme.secondary),
-                    ),
+                    // IconButton(
+                    //   onPressed: () => context.router.back(),
+                    //   splashRadius: kCustomSmall2,
+                    //   icon: Icon(Icons.arrow_back_ios_outlined,
+                    //       size: kIconSizeMedium2,
+                    //       color: Theme.of(context).colorScheme.secondary),
+                    // ),
                     const SizedBox(
                       height: kCustomSmall4,
                     ),
@@ -164,7 +166,7 @@ class LoginView extends StatelessWidget {
                                   .copyWith(
                                       color: Theme.of(context)
                                           .colorScheme
-                                          .background),
+                                          .surfaceDim),
                             ),
                           ),
                         ),
@@ -199,7 +201,7 @@ class LoginView extends StatelessWidget {
                                 .copyWith(
                                     color: Theme.of(context)
                                         .colorScheme
-                                        .background),
+                                        .surfaceDim),
                           ),
                         ),
                         const SizedBox(
@@ -211,7 +213,7 @@ class LoginView extends StatelessWidget {
                         ),
                         BottomText(
                           onTap: () =>
-                              context.router.push(const RegisterViewRoute()),
+                              context.router.push(const RegisterRoute()),
                           normalText:
                               AppLocalizations.of(context)!.loginScreenBottom,
                           boldText: AppLocalizations.of(context)!

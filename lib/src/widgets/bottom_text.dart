@@ -5,11 +5,10 @@ class BottomText extends StatelessWidget {
   final String boldText;
   final VoidCallback onTap;
   const BottomText(
-      {Key? key,
+      {super.key,
       required this.normalText,
       required this.boldText,
-      required this.onTap})
-      : super(key: key);
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {

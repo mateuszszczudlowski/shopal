@@ -55,7 +55,7 @@ class DefaultInput extends StatelessWidget {
     this.inputFormatters,
     this.buildContext,
     this.helperStyle,
-    this.borderRadius = const BorderRadius.all(Radius.circular(12)),
+    this.borderRadius = const BorderRadius.all(Radius.circular(kIconSizeSmall)),
     this.helperMaxLines,
     this.onTap,
     this.textCapitalization,
@@ -113,7 +113,12 @@ class DefaultInput extends StatelessWidget {
           onChanged: onChanged,
           inputFormatters: inputFormatters,
           readOnly: onTap != null,
+          style: const TextStyle(
+              fontSize: kCustomSmall9,
+              height: kCustomSmall5,
+              fontWeight: FontWeight.w400),
           decoration: InputDecoration(
+              contentPadding: const EdgeInsets.symmetric(vertical: kSmallGap3),
               helperText: helperText,
               helperMaxLines: helperMaxLines,
               hintText: hintText,

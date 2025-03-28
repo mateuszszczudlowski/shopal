@@ -37,7 +37,7 @@ class Gender extends StatelessWidget {
               width: kMediumGap3,
               height: kMediumGap3,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.surfaceBright,
                 borderRadius: kDefaultBorderRadius,
               ),
               child: Icon(Icons.woman,

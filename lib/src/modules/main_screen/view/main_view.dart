@@ -9,6 +9,7 @@ import 'package:template/src/modules/main_screen/widgets/bottom_navigation/botto
 import 'package:template/src/theme/cubit/theme_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+@RoutePage()
 class MainView extends StatelessWidget {
   const MainView({super.key});
 
@@ -16,12 +17,12 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: const [
-        MainPageRoute(),
-        SearchPageRoute(),
-        VisitPageRoute(),
-        MessagesPageRoute(),
+        HomeRoute(),
+        SearchRoute(),
+        VisitRoute(),
+        ChatRoute(),
       ],
-      builder: (context, child, tabController) {
+      builder: (context, child) {
         return Scaffold(
           body: child,
           bottomNavigationBar: ClipRect(
@@ -126,8 +127,7 @@ class MainView extends StatelessWidget {
                                 AppImages.messageUnSelecteDark,
                                 width: kIconSizeMedium3,
                               ),
-                              label:
-                                  AppLocalizations.of(context)!.messagesHeader,
+                              label: AppLocalizations.of(context)!.chatsHeader,
                             )
                           : NavigationDestination(
                               tooltip: '',
@@ -139,8 +139,7 @@ class MainView extends StatelessWidget {
                                 AppImages.messageUnSelecteLight,
                                 width: kIconSizeMedium3,
                               ),
-                              label:
-                                  AppLocalizations.of(context)!.messagesHeader,
+                              label: AppLocalizations.of(context)!.chatsHeader,
                             ),
                     ],
                   );

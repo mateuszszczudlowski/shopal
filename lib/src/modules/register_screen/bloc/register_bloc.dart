@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:autoequal/autoequal.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,9 +59,6 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   Future<void> _onRegisterUser(
       RegisterUser event, Emitter<RegisterState> emit) async {
-    log(state.email);
-    log(state.password);
-    log(state.name);
     try {
       await _supabaseRepository.registerUser(
           email: state.email, password: state.password, name: state.name);

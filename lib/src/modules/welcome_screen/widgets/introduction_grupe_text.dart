@@ -18,8 +18,8 @@ class IntroductionGrupeText extends StatelessWidget {
             headerText: AppLocalizations.of(context)!.welcomeHeader,
           ),
           const SizedBox(height: kCustomSmall2),
-          Column(
-            children: const [
+          const Column(
+            children: [
               IntroductionText(),
               SizedBox(height: kMediumGap4),
               IntroductionTextSecond(),

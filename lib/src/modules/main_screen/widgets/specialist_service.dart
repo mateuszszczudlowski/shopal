@@ -7,11 +7,10 @@ class SpecialistService extends StatelessWidget {
   final String svgIconSrc;
   final double boxPadding;
   const SpecialistService(
-      {Key? key,
+      {super.key,
       required this.specialistServiceName,
       required this.svgIconSrc,
-      required this.boxPadding})
-      : super(key: key);
+      required this.boxPadding});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class SpecialistService extends StatelessWidget {
               height: kCustomMedium,
               decoration: BoxDecoration(
                 borderRadius: kDefaultBorderRadius,
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.surfaceBright,
               ),
               child: Padding(
                 padding: EdgeInsets.all(boxPadding),

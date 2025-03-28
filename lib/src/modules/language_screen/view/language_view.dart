@@ -5,6 +5,7 @@ import 'package:template/src/widgets/language_switcher.dart';
 import 'package:template/src/widgets/header_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+@RoutePage()
 class LanguageView extends StatelessWidget {
   const LanguageView({super.key});
 
@@ -26,7 +27,7 @@ class LanguageView extends StatelessWidget {
                       height: kCustomSmall10,
                     ),
                     IconButton(
-                      onPressed: () => context.router.navigateBack(),
+                      onPressed: () => context.router.back(),
                       splashRadius: kCustomSmall2,
                       icon: Icon(Icons.arrow_back_ios_outlined,
                           size: kSmallGap,

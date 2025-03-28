@@ -9,6 +9,7 @@ import 'package:template/src/modules/welcome_screen/widgets/welcome_buttons.dart
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:template/src/widgets/app_logo.dart';
 
+@RoutePage()
 class WelcomeView extends StatelessWidget {
   const WelcomeView({super.key});
 
@@ -44,8 +45,7 @@ class WelcomeView extends StatelessWidget {
                       height: kMediumGap,
                     ),
                     BottomText(
-                      onTap: () =>
-                          context.router.push(const RegisterViewRoute()),
+                      onTap: () => context.router.push(const RegisterRoute()),
                       normalText:
                           AppLocalizations.of(context)!.welcomeScreenBottom,
                       boldText:

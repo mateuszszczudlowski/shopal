@@ -36,9 +36,7 @@ class WelcomeButtons extends StatelessWidget {
             children: [
               Expanded(
                 child: OutlinedButton(
-                  onPressed: () => context.router.pushNamed(
-                    Routes.login.generatePath(),
-                  ),
+                  onPressed: () => context.router.push(const LoginRoute()),
                   child: Text(
                     AppLocalizations.of(context)!.loginBtn,
                     style: generalBtnStyles.btnTextStyle,

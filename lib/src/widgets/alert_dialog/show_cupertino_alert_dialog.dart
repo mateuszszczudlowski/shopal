@@ -10,6 +10,7 @@ import 'package:template/src/utils/loading_status.dart';
 class ShowCupertinoAlertDialog extends StatelessWidget {
   final String alertHeader;
   final String alertSubheader;
+  final bool showInputTextField;
   final VoidCallback? voidCallback;
 
   final Function()? onYesTap;
@@ -22,6 +23,7 @@ class ShowCupertinoAlertDialog extends StatelessWidget {
     this.voidCallback,
     this.onNoTap,
     this.onYesTap,
+    required this.showInputTextField,
   })  : assert(onNoTap != null || voidCallback != null),
         assert(onYesTap != null || voidCallback != null);
 
@@ -35,45 +37,52 @@ class ShowCupertinoAlertDialog extends StatelessWidget {
           const SizedBox(
             height: kCustomSmall3,
           ),
-          Card(
-            color: Colors.transparent,
-            elevation: 0.0,
-            child: Column(
-              children: <Widget>[
-                BlocBuilder<AuthenticationBloc, AuthenticationState>(
-                  builder: (context, state) {
-                    return TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      style: const TextStyle(color: Colors.black),
-                      onChanged: (value) => context
-                          .read<AuthenticationBloc>()
-                          .add(ResetEmailChanged(value)),
-                      decoration: InputDecoration(
-                          errorText: (context
-                                  .read<AuthenticationBloc>()
-                                  .state
-                                  .validationStatus is FailedStatus)
-                              ? 'Unable to validate email address: invalid format.'
-                              : null,
-                          errorMaxLines: 2,
-                          contentPadding: const EdgeInsets.symmetric(
-                              horizontal: kCustomSmall3),
-                          labelStyle: const TextStyle(color: Colors.black),
-                          filled: true,
-                          fillColor: Colors.grey.shade50),
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
+          (showInputTextField == true)
+              ? Card(
+                  color: Colors.transparent,
+                  elevation: 0.0,
+                  child: Column(
+                    children: <Widget>[
+                      BlocBuilder<AuthenticationBloc, AuthenticationState>(
+                        builder: (context, state) {
+                          return TextField(
+                            keyboardType: TextInputType.emailAddress,
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: kCustomSmall9,
+                                height: kCustomSmall5,
+                                fontWeight: FontWeight.w400),
+                            onChanged: (value) => context
+                                .read<AuthenticationBloc>()
+                                .add(ResetEmailChanged(value)),
+                            decoration: InputDecoration(
+                                errorText: (context
+                                        .read<AuthenticationBloc>()
+                                        .state
+                                        .validationStatus is FailedStatus)
+                                    ? 'Unable to validate email address: invalid format.'
+                                    : null,
+                                errorMaxLines: 2,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: kCustomSmall3),
+                                labelStyle:
+                                    const TextStyle(color: Colors.black),
+                                filled: true,
+                                fillColor: Colors.grey.shade50),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                )
+              : const SizedBox(),
         ],
       ),
       actions: <Widget>[
         CupertinoButton(
             onPressed: onNoTap,
             child: Text(
-              AppLocalizations.of(context)!.canacel,
+              AppLocalizations.of(context)!.cancel,
               style: const TextStyle(color: Colors.blue),
             )),
         CupertinoButton(

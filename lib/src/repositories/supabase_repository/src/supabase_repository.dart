@@ -10,6 +10,8 @@ class SupabaseRequestFailure extends SupabaseAuthException {
 }
 
 class SupabaseRepository implements ISupabaseRepository {
+  String mainUrl =
+      'https://moxeubbwcknxpiyoncow.supabase.co/storage/v1/object/public/';
   @override
   Future<void> registerUser(
       {required String email,
@@ -45,7 +47,7 @@ class SupabaseRepository implements ISupabaseRepository {
   @override
   Future<void> loginUserWithGoogle() async {
     try {
-      await client.supabaseClient.auth.signInWithOAuth(Provider.google);
+      // await client.supabaseClient.auth.signInWithOAuth(Provider.google);
     } on AuthException catch (exception, stackTrace) {
       Error.throwWithStackTrace(SupabaseRequestFailure(exception), stackTrace);
     } catch (exception, stackTrace) {
@@ -68,7 +70,7 @@ class SupabaseRepository implements ISupabaseRepository {
   @override
   Future<void> loginUserWithFacebook() async {
     try {
-      await client.supabaseClient.auth.signInWithOAuth(Provider.facebook);
+      // await client.supabaseClient.auth.signInWithOAuth(Provider.facebook);
     } on AuthException catch (exception, stackTrace) {
       Error.throwWithStackTrace(SupabaseRequestFailure(exception), stackTrace);
     } catch (exception, stackTrace) {
@@ -86,7 +88,7 @@ class SupabaseRepository implements ISupabaseRepository {
   }
 
   @override
-  Stream<dynamic> getProfile() {
+  Stream<dynamic> getProfile() async* {
     try {
       final userId = client.supabaseClient.auth.currentUser!.id;
 
@@ -97,7 +99,7 @@ class SupabaseRepository implements ISupabaseRepository {
           .single()
           .asStream();
 
-      return res;
+      yield res;
     } on PostgrestException catch (error, stackTrace) {
       log(error.toString());
       Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);
@@ -127,6 +129,104 @@ class SupabaseRepository implements ISupabaseRepository {
           UserAttributes(email: email),
         );
       }
+    } on PostgrestException catch (error, stackTrace) {
+      log(error.toString());
+      Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);
+    } catch (error, stackTrace) {
+      log(error.toString());
+      Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);
+    }
+  }
+
+  @override
+  Stream<dynamic> getSpecialistList() {
+    try {
+      final res = client.supabaseClient.from('specialist').select().asStream();
+
+      return res;
+    } on PostgrestException catch (error, stackTrace) {
+      log(error.toString());
+      Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);
+    } catch (error, stackTrace) {
+      log(error.toString());
+      Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);
+    }
+  }
+
+  @override
+  Future<String> getSpecialistAvatar() async {
+    try {
+      final res = await client.supabaseClient.storage
+          .from('specialist_avatar')
+          .list(
+              path: 'a6a3a2d1-c2ea-41aa-b262-3d607a7201b9/',
+              searchOptions: const SearchOptions(limit: 3));
+
+      String imgUrl =
+          '$mainUrl/specialist_avatar/a6a3a2d1-c2ea-41aa-b262-3d607a7201b9/${res[1].name}';
+
+      return imgUrl;
+    } on PostgrestException catch (error, stackTrace) {
+      log(error.toString());
+      Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);
+    } catch (error, stackTrace) {
+      log(error.toString());
+      Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);
+    }
+  }
+
+  @override
+  Stream<dynamic> getOpinions(String id) {
+    try {
+      final res = client.supabaseClient
+          .from('specialist')
+          .select(
+            '*, opinions(*), opinions_responses(*), opening_hours(*), social_media_links(*), services(*), portfolio(*)',
+          )
+          .eq('id', id)
+          .asStream();
+
+      return res;
+    } on PostgrestException catch (error, stackTrace) {
+      log(error.toString());
+      Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);
+    } catch (error, stackTrace) {
+      log(error.toString());
+      Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);
+    }
+  }
+
+  @override
+  Stream<dynamic> getOpinionResponse(String id) {
+    try {
+      final res = client.supabaseClient
+          .from('opinions')
+          .select(
+            '*, opinions_responses(*)',
+          )
+          .eq('id', id)
+          .asStream();
+
+      return res;
+    } on PostgrestException catch (error, stackTrace) {
+      log(error.toString());
+      Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);
+    } catch (error, stackTrace) {
+      log(error.toString());
+      Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);
+    }
+  }
+
+  @override
+  Stream<dynamic> searchSpecialist(String searchTerm) {
+    try {
+      final res = client.supabaseClient
+          .from('specialist')
+          .select()
+          .ilike('name', '%$searchTerm%')
+          .asStream();
+
+      return res;
     } on PostgrestException catch (error, stackTrace) {
       log(error.toString());
       Error.throwWithStackTrace(SupabaseRequestFailure(error), stackTrace);

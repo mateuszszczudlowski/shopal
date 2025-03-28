@@ -18,4 +18,9 @@ abstract class ISupabaseRepository {
   Future<void> updateUserData({required String name, required String email});
 
   Stream<dynamic> getProfile();
+  Stream<dynamic> getSpecialistList();
+  Future<String> getSpecialistAvatar();
+  Stream<dynamic> getOpinions(String id);
+  Stream<dynamic> getOpinionResponse(String id);
+  Stream<dynamic> searchSpecialist(String searchTerm);
 }

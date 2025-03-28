@@ -9,10 +9,10 @@ BlocListener authenticationWrapper({required AppRouter router}) {
     listener: (context, state) {
       switch (state.status) {
         case AuthenticationStatus.authenticated:
-          router.replaceNamed(Routes.main.generatePath());
+          router.replace(const MainRoute());
           break;
         case AuthenticationStatus.unauthenticated:
-          router.replaceNamed(Routes.login.generatePath());
+          router.replace(const LoginRoute());
           break;
         default:
           break;

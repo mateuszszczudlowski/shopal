@@ -6,6 +6,7 @@ import 'package:template/src/config/theme/text.dart';
 
 class AppThemeLight {
   static ThemeData get shopalThemeLight => ThemeData(
+        useMaterial3: false,
         extensions: <ThemeExtension<dynamic>>[
           GeneralBtnStyles(btnTextStyle: defaultTextBtnStyle)
         ],
@@ -14,7 +15,7 @@ class AppThemeLight {
           backgroundColor: mainColorDark,
           indicatorColor: Colors.transparent,
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-          labelTextStyle: MaterialStateProperty.all(
+          labelTextStyle: WidgetStateProperty.all(
             const TextStyle(
                 height: 1.2,
                 fontSize: 12.0,
@@ -22,17 +23,19 @@ class AppThemeLight {
                 color: darkPurpleColor),
           ),
         ),
+
         colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: darkPurpleColor,
-            primaryContainer: introductionText,
-            secondaryContainer: mainColor,
-            secondary: blackColor,
-            tertiary: bottomNavGrayColorLight,
-            onTertiary: introductionText,
-            background: lightBlackColor,
-            onBackground: loginContainerBg,
-            onSurface: borderColorLight,
-            surface: trueBlackColor),
+          primary: darkPurpleColor,
+          primaryContainer: introductionText,
+          secondaryContainer: mainColor,
+          secondary: blackColor,
+          tertiary: bottomNavGrayColorLight,
+          onTertiary: introductionText,
+          surfaceDim: lightBlackColor,
+          surfaceBright: loginContainerBg,
+          onSurface: borderColorLight,
+          surface: trueBlackColor,
+        ),
         textTheme: appTextTheme.copyWith(
             titleMedium: const TextStyle(color: trueBlackColor)),
         // buttons
@@ -59,7 +62,10 @@ class AppThemeLight {
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
-          hintStyle: const TextStyle(color: borderColorLight),
+          hintStyle: const TextStyle(
+            color: borderColorLight,
+            fontFamily: appMainFont,
+          ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
             borderSide: const BorderSide(

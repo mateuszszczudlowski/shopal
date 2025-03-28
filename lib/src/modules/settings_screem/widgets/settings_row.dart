@@ -7,12 +7,11 @@ class SettingsRow extends StatelessWidget {
   final IconData icon;
   final VoidCallback callback;
   const SettingsRow(
-      {Key? key,
+      {super.key,
       required this.header,
       required this.subheader,
       required this.callback,
-      required this.icon})
-      : super(key: key);
+      required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class SettingsRow extends StatelessWidget {
                   width: kMediumGap3,
                   height: kMediumGap3,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.onBackground,
+                    color: Theme.of(context).colorScheme.surfaceBright,
                     borderRadius: kDefaultBorderRadius,
                   ),
                   child: Icon(icon,

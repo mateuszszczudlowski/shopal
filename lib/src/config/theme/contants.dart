@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
 const kDefaultPadding = EdgeInsets.all(20);
-const kHorizontalPadding = EdgeInsets.only(top: 20, left: 20, right: 20);
+const kDefaultPaddingSmall = EdgeInsets.symmetric(horizontal: 12);
+const kDefaultPaddingSSmall = EdgeInsets.symmetric(horizontal: 8);
+const kHorizontalPadding =
+    EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20);
+const kHorizontalPaddingBottomZero =
+    EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0);
+const kTopHorizontalPaddingMedium = EdgeInsets.only(
+  top: 8,
+);
+const kTopHorizontalPaddingSmall = EdgeInsets.only(top: 8);
+const kServicesTabLabelsPadding = EdgeInsets.only(left: 12, right: 12);
+const kServicesListPadding = EdgeInsets.symmetric(horizontal: 6, vertical: 10);
+const kBottomPaddingSmall = EdgeInsets.only(bottom: 14);
 const kDefaultBorderRadius = BorderRadius.all(
   Radius.circular(12),
 );
@@ -12,7 +24,12 @@ const kDefaultBorderRadius2 = BorderRadius.all(
   Radius.circular(8),
 );
 
+const kDefaultBorderRadius3 = BorderRadius.only(
+  bottomRight: Radius.circular(22),
+);
+
 const borderRadiusMedium = Radius.circular(12.0);
+const borderRadiusMedium2 = Radius.circular(22.0);
 
 const double kSmallGap = 20.0;
 const double kSmallGap2 = 22.0;
@@ -79,3 +96,5 @@ const double kUpComingVisit = 75.0;
 const double kResetFontHeight = 1.0;
 
 const int kAnimationNavigation = 500;
+const double kSpecialistImage = 300;
+const double kSpecialistImage2 = 240;

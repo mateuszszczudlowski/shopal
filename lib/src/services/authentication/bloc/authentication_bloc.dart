@@ -4,7 +4,7 @@ import 'package:autoequal/autoequal.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/src/repositories/supabase_repository/supabase_repository.dart';
-import 'package:template/src/repositories/user_repository/src/models/user_profile.dart';
+import 'package:template/src/models/user_profile.dart';
 import 'package:template/src/utils/authentication_status.dart';
 import 'package:template/src/utils/loading_status.dart';
 

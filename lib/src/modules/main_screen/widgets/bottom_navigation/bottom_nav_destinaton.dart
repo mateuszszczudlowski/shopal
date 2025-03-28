@@ -9,13 +9,12 @@ class BottomNavDestination extends StatelessWidget {
   final String navLabel;
 
   const BottomNavDestination(
-      {Key? key,
+      {super.key,
       required this.selectedIcon,
       required this.selectedIconSize,
       required this.baseIcon,
       required this.baseIconSize,
-      required this.navLabel})
-      : super(key: key);
+      required this.navLabel});
 
   @override
   Widget build(BuildContext context) {

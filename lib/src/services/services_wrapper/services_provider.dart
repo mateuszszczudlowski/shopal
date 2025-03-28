@@ -5,7 +5,7 @@ import 'package:template/src/services/authentication/bloc/authentication_bloc.da
 
 class ServicesProvider extends StatelessWidget {
   final Widget child;
-  const ServicesProvider({Key? key, required this.child}) : super(key: key);
+  const ServicesProvider({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

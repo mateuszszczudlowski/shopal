@@ -9,6 +9,7 @@ class ShowPlatformAlertDialog {
       {required BuildContext context,
       required VoidCallback voidCallback,
       required String alertHeader,
+      required bool showInputTextField,
       required String alertSubheader}) {
     final platform =
         Platform.isAndroid ? TargetPlatform.android : TargetPlatform.iOS;
@@ -19,11 +20,13 @@ class ShowPlatformAlertDialog {
       builder: (BuildContext context) {
         if (platform == TargetPlatform.android) {
           return ShowAndroidAlertDialog(
+              showInputTextField: showInputTextField,
               alertHeader: alertHeader,
               alertSubheader: alertSubheader,
               voidCallback: voidCallback);
         } else {
           return ShowCupertinoAlertDialog(
+              showInputTextField: showInputTextField,
               alertHeader: alertHeader,
               alertSubheader: alertSubheader,
               voidCallback: voidCallback);
@@ -38,6 +41,7 @@ class ShowPlatformAlertDialog {
     required Function() onNoTap,
     required String alertHeader,
     required String alertSubheader,
+    required bool showInputTextField,
   }) {
     final platform =
         Platform.isAndroid ? TargetPlatform.android : TargetPlatform.iOS;
@@ -47,6 +51,7 @@ class ShowPlatformAlertDialog {
       builder: (BuildContext context) {
         if (platform == TargetPlatform.android) {
           return ShowAndroidAlertDialog(
+            showInputTextField: showInputTextField,
             alertHeader: alertHeader,
             alertSubheader: alertSubheader,
             onNoTap: onNoTap,
@@ -54,6 +59,7 @@ class ShowPlatformAlertDialog {
           );
         } else {
           return ShowCupertinoAlertDialog(
+            showInputTextField: showInputTextField,
             alertHeader: alertHeader,
             alertSubheader: alertSubheader,
             onNoTap: onNoTap,

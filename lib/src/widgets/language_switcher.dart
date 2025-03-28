@@ -7,8 +7,7 @@ class LanguageSwitcher extends StatelessWidget {
   final String language;
   final bool? selected;
   const LanguageSwitcher(
-      {Key? key, required this.language, required this.selected})
-      : super(key: key);
+      {super.key, required this.language, required this.selected});
 
   @override
   Widget build(BuildContext context) {

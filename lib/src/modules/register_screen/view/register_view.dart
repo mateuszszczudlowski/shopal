@@ -13,7 +13,8 @@ import 'package:template/src/widgets/default_input.dart';
 import 'package:template/src/widgets/header_widget.dart';
 import 'package:template/src/widgets/login_with_social_media.dart';
 
-class RegisterView extends StatelessWidget with AutoRouteWrapper {
+@RoutePage()
+class RegisterView extends StatelessWidget implements AutoRouteWrapper {
   const RegisterView({super.key});
 
   @override
@@ -37,7 +38,7 @@ class RegisterView extends StatelessWidget with AutoRouteWrapper {
                           height: kCustomSmall1,
                         ),
                         IconButton(
-                          onPressed: () => context.router.navigateBack(),
+                          onPressed: () => context.router.back(),
                           splashRadius: kCustomSmall2,
                           icon: Icon(Icons.arrow_back_ios_outlined,
                               size: kSmallGap,
@@ -218,7 +219,7 @@ class RegisterView extends StatelessWidget with AutoRouteWrapper {
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
-                                            .background),
+                                            .surfaceDim),
                               ),
                             ),
                             const SizedBox(
@@ -230,7 +231,7 @@ class RegisterView extends StatelessWidget with AutoRouteWrapper {
                             ),
                             BottomText(
                               onTap: () =>
-                                  context.router.push(const LoginViewRoute()),
+                                  context.router.push(const LoginRoute()),
                               normalText: AppLocalizations.of(context)!
                                   .registerScreenBottom,
                               boldText: AppLocalizations.of(context)!.loginBtn,

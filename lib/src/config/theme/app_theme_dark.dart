@@ -6,6 +6,7 @@ import 'package:template/src/config/theme/text.dart';
 
 class AppThemeDark {
   static ThemeData get shopalThemeDark => ThemeData(
+        useMaterial3: false,
         extensions: <ThemeExtension<dynamic>>[
           GeneralBtnStyles(btnTextStyle: defaultTextBtnStyle)
         ],
@@ -14,7 +15,7 @@ class AppThemeDark {
           backgroundColor: mainColorDark,
           indicatorColor: Colors.transparent,
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-          labelTextStyle: MaterialStateProperty.all(
+          labelTextStyle: WidgetStateProperty.all(
             const TextStyle(
                 height: 1.2,
                 fontSize: 12.0,
@@ -29,8 +30,8 @@ class AppThemeDark {
             secondaryContainer: mainColorDark,
             tertiary: bottomNavGrayColorDark,
             onTertiary: introductionTextDark,
-            background: lightWhiteColor,
-            onBackground: loginContainerBgDark,
+            surfaceDim: lightWhiteColor,
+            surfaceBright: loginContainerBgDark,
             onSurface: borderColorDark,
             surface: semiWhiteColor),
         textTheme: appTextTheme.copyWith(
@@ -58,7 +59,10 @@ class AppThemeDark {
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
-          hintStyle: const TextStyle(color: borderColorDark),
+          hintStyle: const TextStyle(
+            color: borderColorDark,
+            fontFamily: appMainFont,
+          ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
             borderSide: const BorderSide(

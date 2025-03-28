@@ -14,6 +14,7 @@ class ThemeSwitcher extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
           return SwitchListTile(
+            inactiveTrackColor: Theme.of(context).colorScheme.primaryContainer,
             activeColor: Theme.of(context).colorScheme.primary,
             contentPadding:
                 const EdgeInsets.only(left: 5, right: 0, top: 0, bottom: 0),
@@ -25,7 +26,7 @@ class ThemeSwitcher extends StatelessWidget {
               width: kMediumGap3,
               height: kMediumGap3,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.surfaceBright,
                 borderRadius: kDefaultBorderRadius,
               ),
               child: Icon(Icons.nightlight_round_sharp,

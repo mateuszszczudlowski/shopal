@@ -9,7 +9,7 @@ import 'package:template/src/utils/loading_status.dart';
 class RegisterBlocProvider extends StatelessWidget {
   final Widget child;
 
-  const RegisterBlocProvider({Key? key, required this.child}) : super(key: key);
+  const RegisterBlocProvider({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class RegisterBlocProvider extends StatelessWidget {
       child: BlocListener<RegisterBloc, RegisterState>(
         listener: (context, state) {
           if (state.loadingStatus is SuccessStatus) {
-            context.router.push(const LoginViewRoute());
+            context.router.push(const LoginRoute());
           }
         },
         child: child,

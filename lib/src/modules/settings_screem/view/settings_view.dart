@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,12 +13,14 @@ import 'package:template/src/widgets/bottom_text.dart';
 import 'package:template/src/widgets/header_widget.dart';
 import 'package:template/src/widgets/settings_header.dart';
 
+@RoutePage()
 class SettingsView extends StatelessWidget {
   final dynamic user;
   const SettingsView({super.key, required this.user});
 
   Future<void> _deleteAccount(BuildContext context) async {
     await ShowPlatformAlertDialog.showPlatformAlertDialogWithCallbacks(
+        showInputTextField: true,
         context: context,
         onNoTap: () {
           context.router.pop(false).then((value) => context
@@ -50,8 +51,7 @@ class SettingsView extends StatelessWidget {
                       height: kCustomSmall10,
                     ),
                     IconButton(
-                      onPressed: () =>
-                          context.router.push(const MainViewRoute()),
+                      onPressed: () => context.router.push(const MainRoute()),
                       splashRadius: kCustomSmall2,
                       icon: Icon(Icons.arrow_back_ios_outlined,
                           size: kSmallGap,
@@ -80,8 +80,8 @@ class SettingsView extends StatelessWidget {
                       subheader: AppLocalizations.of(context)!.personalData,
                       icon: Icons.person,
                       callback: () {
-                        context.router.pushNamed(
-                          Routes.account.generatePath(),
+                        context.router.push(
+                          const AccountRoute(),
                         );
                       },
                     ),
@@ -104,10 +104,13 @@ class SettingsView extends StatelessWidget {
                       icon: Icons.public,
                       subheader: AppLocalizations.of(context)!.language1,
                       callback: () {
-                        context.router.pushNamed(
-                          Routes.language.generatePath(),
+                        context.router.push(
+                          const LanguageRoute(),
                         );
                       },
+                    ),
+                    const SizedBox(
+                      height: 14,
                     ),
                     const Spacer(),
                     BottomText(

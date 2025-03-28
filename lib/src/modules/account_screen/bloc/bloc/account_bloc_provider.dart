@@ -10,7 +10,7 @@ import 'package:template/src/utils/loading_status.dart';
 class AccountBlocProvider extends StatelessWidget {
   final Widget child;
 
-  const AccountBlocProvider({Key? key, required this.child}) : super(key: key);
+  const AccountBlocProvider({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class AccountBlocProvider extends StatelessWidget {
       child: BlocListener<AccountBloc, AccountState>(
         listener: (context, state) {
           if (state.loadingStatus is SuccessStatus) {
-            context.router.push(SettingsViewRoute(
+            context.router.push(SettingsRoute(
                 user: BlocProvider.of<AuthenticationBloc>(context)
                     .state
                     .userProfile));

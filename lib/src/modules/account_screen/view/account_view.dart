@@ -16,22 +16,9 @@ import 'package:template/src/widgets/header_widget.dart';
 import 'package:template/src/config/theme/general_btn_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AccountView extends StatelessWidget with AutoRouteWrapper {
+@RoutePage()
+class AccountView extends StatelessWidget implements AutoRouteWrapper {
   const AccountView({super.key});
-
-  Future<void> _resetPassword(BuildContext context) async {
-    await ShowPlatformAlertDialog.showPlatformAlertDialogWithCallbacks(
-        context: context,
-        onNoTap: () {
-          context.router.pop(false).then((value) => context
-              .read<AuthenticationBloc>()
-              .add(const ChangeValidationStatus()));
-        },
-        onYesTap: () =>
-            context.read<AuthenticationBloc>().add(const ResetPassword()),
-        alertHeader: AppLocalizations.of(context)!.resetPasswordHeader,
-        alertSubheader: AppLocalizations.of(context)!.resetPasswordSubheader);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -209,6 +196,21 @@ class AccountView extends StatelessWidget with AutoRouteWrapper {
         ),
       ),
     );
+  }
+
+  Future<void> _resetPassword(BuildContext context) async {
+    await ShowPlatformAlertDialog.showPlatformAlertDialogWithCallbacks(
+        showInputTextField: true,
+        context: context,
+        onNoTap: () {
+          context.router.pop(false).then((value) => context
+              .read<AuthenticationBloc>()
+              .add(const ChangeValidationStatus()));
+        },
+        onYesTap: () =>
+            context.read<AuthenticationBloc>().add(const ResetPassword()),
+        alertHeader: AppLocalizations.of(context)!.resetPasswordHeader,
+        alertSubheader: AppLocalizations.of(context)!.resetPasswordSubheader);
   }
 
   @override

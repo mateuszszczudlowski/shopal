@@ -1,73 +1,97 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:template/src/modules/account_screen/view/account_view.dart';
+import 'package:template/src/modules/main_screen/widgets/pages/chat_page.dart';
+import 'package:template/src/modules/language_screen/view/language_view.dart';
+import 'package:template/src/modules/login_screen/view/login_view.dart';
+import 'package:template/src/modules/main_screen/view/main_view.dart';
+import 'package:template/src/modules/register_screen/view/register_view.dart';
+import 'package:template/src/modules/main_screen/widgets/pages/search_page.dart';
+import 'package:template/src/modules/single_chat_screen/view/single_chat_view.dart';
+import 'package:template/src/modules/main_screen/widgets/pages/visit_page.dart';
+import 'package:template/src/modules/main_screen/widgets/pages/home_page.dart';
+import 'package:template/src/modules/welcome_screen/view/welcome_view.dart';
+import 'package:template/src/modules/settings_screem/view/settings_view.dart';
+import 'package:template/src/modules/specialist_screen/view/specialist_view.dart';
+import 'package:template/src/modules/book_screen/view/book_view.dart';
+import 'package:template/src/modules/visit_confirm_screen/view/visit_confirm_view.dart';
+import 'package:template/src/modules/single_visit/view/single_visit_view.dart';
+import 'package:template/src/modules/specialist_screen/widget/page/gallery_view.dart';
+
 import 'package:flutter/material.dart';
-import 'package:template/src/config/routes/account.dart';
-import 'package:template/src/config/routes/language.dart';
-import 'package:template/src/config/routes/login.dart';
-import 'package:template/src/config/routes/main.dart';
-import 'package:template/src/config/routes/main_page.dart';
-import 'package:template/src/config/routes/messages_page.dart';
-import 'package:template/src/config/routes/search_page.dart';
-import 'package:template/src/config/routes/settings.dart';
-import 'package:template/src/config/routes/visit_page.dart';
-import 'package:template/src/config/routes/welcome.dart';
-import 'package:template/src/config/routes/register.dart';
 
 part 'routes.gr.dart';
 
-class Routes {
-  static const welcome = WelcomeRouteHelper();
-  static const login = LoginRouteHelper();
-  static const register = RegisterRouteHelper();
-  static const main = MainRouteHelper();
-  static const settings = SettingsRouteHelper();
-  static const account = AccountRouteHelper();
-  static const mainPage = MainPageHelper();
-  static const searchPage = SearchPageHelper();
-  static const visitPage = VisitPageHelper();
-  static const messagesPage = MessagesPageHelper();
-  static const language = LanguageRouteHelper();
+@AutoRouterConfig(replaceInRouteName: 'View,Route')
+class AppRouter extends _$AppRouter {
+  @override
+  RouteType get defaultRouteType => const RouteType.adaptive();
+  @override
+  List<AutoRoute> get routes => [
+        AutoRoute(
+          page: WelcomeRoute.page,
+          path: '/',
+          initial: true,
+        ),
+        CustomRoute(
+          page: MainRoute.page,
+          path: '/main',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          children: [
+            AutoRoute(
+              page: HomeRoute.page,
+              path: 'home-page',
+            ),
+            AutoRoute(
+              page: SearchRoute.page,
+              path: 'search-page',
+            ),
+            AutoRoute(
+              page: VisitRoute.page,
+              path: 'visit-page',
+            ),
+            AutoRoute(
+              page: ChatRoute.page,
+              path: 'chat-page',
+            ),
+          ],
+        ),
+        AutoRoute(
+          page: LoginRoute.page,
+          path: '/login',
+        ),
+        AutoRoute(page: RegisterRoute.page, path: '/register'),
+        CustomRoute(
+          page: SettingsRoute.page,
+          path: '/settings/:title',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+        CustomRoute(
+          page: SingleChatRoute.page,
+          path: '/single-chat',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+        CustomRoute(
+          page: GalleryRoute.page,
+          path: '/gallery',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+        CustomRoute(
+          page: SpecialistRoute.page,
+          path: '/specialist/:title',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+        CustomRoute(
+          page: VisitConfirmRoute.page,
+          path: '/visit-confirm',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+        CustomRoute(
+          page: SingleVisitRoute.page,
+          path: '/visit-single',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+        AutoRoute(page: AccountRoute.page, path: '/account'),
+        AutoRoute(page: LanguageRoute.page, path: '/language'),
+        AutoRoute(page: BookRoute.page, path: '/book'),
+      ];
 }
-
-@AdaptiveAutoRouter(routes: [
-  AutoRoute(
-    page: WelcomeRouteHelper.widget,
-    path: WelcomeRouteHelper.path,
-    initial: true,
-  ),
-  CustomRoute(
-    page: MainRouteHelper.widget,
-    path: MainRouteHelper.path,
-    transitionsBuilder: TransitionsBuilders.fadeIn,
-    children: [
-      AutoRoute(
-        page: MainPageHelper.widget,
-        path: MainPageHelper.path,
-      ),
-      AutoRoute(
-        page: SearchPageHelper.widget,
-        path: SearchPageHelper.path,
-      ),
-      AutoRoute(
-        page: VisitPageHelper.widget,
-        path: VisitPageHelper.path,
-      ),
-      AutoRoute(
-        page: MessagesPageHelper.widget,
-        path: MessagesPageHelper.path,
-      ),
-    ],
-  ),
-  AutoRoute(
-    page: LoginRouteHelper.widget,
-    path: LoginRouteHelper.path,
-  ),
-  AutoRoute(page: RegisterRouteHelper.widget, path: RegisterRouteHelper.path),
-  CustomRoute(
-    page: SettingsRouteHelper.widget,
-    path: SettingsRouteHelper.path,
-    transitionsBuilder: TransitionsBuilders.fadeIn,
-  ),
-  AutoRoute(page: AccountRouteHelper.widget, path: AccountRouteHelper.path),
-  AutoRoute(page: LanguageRouteHelper.widget, path: LanguageRouteHelper.path),
-])
-class AppRouter extends _$AppRouter {}

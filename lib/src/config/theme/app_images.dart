@@ -1,8 +1,8 @@
 const assetPath = 'assets/images';
 
 class AppImages {
-  static const ckeckOkLight = '$assetPath/check_ok_light.svg';
-  static const ckeckOkDark = '$assetPath/check_ok_dark.svg';
+  static const checkOkLight = '$assetPath/check_ok_light.svg';
+  static const checkOkDark = '$assetPath/check_ok_dark.svg';
 
   // Specialist Services Icons Light
   static const wardrobeAnalysisRefreshLight =
@@ -31,6 +31,12 @@ class AppImages {
   static const searchIconLight = '$assetPath/search_icon_light.svg';
 
   static const starRating = '$assetPath/star_rating.svg';
+  static const starRatingFull = '$assetPath/star_rating_full.svg';
+  static const starRatingHalf = '$assetPath/star_rating_half.svg';
+
+  static const starRatingLight = '$assetPath/star_rating_light.svg';
+  static const starRatingFullLight = '$assetPath/star_rating_full_light.svg';
+  static const starRatingHalfLight = '$assetPath/star_rating_light-half.svg';
 
   static const homeIconActiveDark = '$assetPath/home_active_icon_dark.svg';
   static const homeIconInActiveDark = '$assetPath/home_inactive_icon_dark.svg';

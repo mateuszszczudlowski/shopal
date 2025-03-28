@@ -8,21 +8,22 @@ import 'package:template/src/services/authentication/bloc/authentication_bloc.da
 class ShowAndroidAlertDialog extends StatelessWidget {
   final String alertHeader;
   final String alertSubheader;
+  final bool showInputTextField;
   final Function()? onYesTap;
   final Function()? onNoTap;
 
   final VoidCallback? voidCallback;
 
   const ShowAndroidAlertDialog({
-    Key? key,
+    super.key,
     required this.alertHeader,
     required this.alertSubheader,
     this.voidCallback,
     this.onNoTap,
     this.onYesTap,
+    required this.showInputTextField,
   })  : assert(onNoTap != null || voidCallback != null),
-        assert(onYesTap != null || voidCallback != null),
-        super(key: key);
+        assert(onYesTap != null || voidCallback != null);
 
   @override
   Widget build(BuildContext context) {
@@ -41,26 +42,28 @@ class ShowAndroidAlertDialog extends StatelessWidget {
             const SizedBox(
               height: kIconSizeMedium2,
             ),
-            TextField(
-              keyboardType: TextInputType.emailAddress,
-              style: const TextStyle(color: Colors.black),
-              onChanged: (value) => context
-                  .read<AuthenticationBloc>()
-                  .add(ResetEmailChanged(value)),
-              decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: kCustomSmall3),
-                  labelStyle: const TextStyle(color: Colors.black),
-                  filled: true,
-                  fillColor: Colors.grey.shade50),
-            ),
+            (showInputTextField == true)
+                ? TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    style: const TextStyle(color: Colors.black),
+                    onChanged: (value) => context
+                        .read<AuthenticationBloc>()
+                        .add(ResetEmailChanged(value)),
+                    decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: kCustomSmall3),
+                        labelStyle: const TextStyle(color: Colors.black),
+                        filled: true,
+                        fillColor: Colors.grey.shade50),
+                  )
+                : const SizedBox(),
           ],
         ),
       ),
       actions: <Widget>[
         MaterialButton(
           onPressed: onNoTap,
-          child: Text(AppLocalizations.of(context)!.canacel,
+          child: Text(AppLocalizations.of(context)!.cancel,
               style:
                   const TextStyle(color: Colors.blue, fontSize: kCustomSmall9)),
         ),

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -24,10 +25,13 @@ class MyApp extends StatelessWidget {
               return MaterialApp.router(
                 routerDelegate: _router.delegate(
                   navRestorationScopeId: 'app',
-                  initialDeepLink:
-                      client.supabaseClient.auth.currentSession != null
-                          ? '/main/'
-                          : '/login',
+                  deepLinkBuilder: (deepLink) {
+                    if (client.supabaseClient.auth.currentSession != null) {
+                      return const DeepLink.path('/main/');
+                    } else {
+                      return const DeepLink.path('/login/');
+                    }
+                  },
                 ),
                 routeInformationParser: _router.defaultRouteParser(),
                 localizationsDelegates: const [
