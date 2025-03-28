@@ -60,13 +60,17 @@ Shopal is a mobile application built with Flutter that helps users find and book
    ```
 
 3. Set up environment variables:
-   Create a file at `lib/src/environment/variables.dart` with your Supabase credentials:
-   ```dart
-   class EnvironmentVariables {
-     static const String supabaseUrl = 'YOUR_SUPABASE_URL';
-     static const String supabaseAnnonKey = 'YOUR_SUPABASE_ANON_KEY';
-   }
-   ```
+  This project uses environment variables for configuration. You need to create an `environment` folder with the following files:
+
+  1. `.dev-variables` for development environment:
+    APP_NAME_DEV = Dev app
+    APP_SUFFIX_DEV = .dev
+    SENTRY_DSN_DEV = value
+    SENTRY_ENVIRONMENT_DEV = development
+    SUPABASE_URL_DEV = your_supabase_url
+    SUPABASE_ANNON_KEY_DEV = your_supabase_anon_key
+    
+  2. `.prod-variables` for production environment (similar structure)  
 
 4. Run code generation:
    ```

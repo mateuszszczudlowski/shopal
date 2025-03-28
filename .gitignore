@@ -50,3 +50,13 @@ app.*.map.json
 *.g.dart
 *.gr.dart
 
+
+# Environment variables
+/environment/
+*.env
+.env
+.env.*
+
+/environment/.dev-variables
+/environment/.prod-variables
+
